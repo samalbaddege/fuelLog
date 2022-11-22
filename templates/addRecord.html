@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h1>Add Record</h1>
+    <form action="/addRecord" method="post">
+        <input autocomplete="off" id="refuelMileage" name="refuelMileage" placeholder="refuelMileage" type="text" autofocus><br>
+        <input autocomplete="off" id="refuelAmount"  name="refuelAmount" placeholder="refuelAmount" type="number" step="any"><br>
+        <input autocomplete="off" id="Full" name="refuelType" type="radio" value="Full"><label for="Full">Full</label>
+        <input autocomplete="off" id="Partial" name="refuelType" type="radio" value="Partial"><label for="Partial">Partial</label><br>
+        <input autocomplete="off" id="refuelDate"    name="refuelDate" value="" type="date"><br>
+        <input autocomplete="off" id="refuelQty" name="refuelQty" placeholder="refuelQty" type="text"><br>
+        <input autocomplete="off" id="refuelUnitPrice" name="refuelUnitPrice" placeholder="refuelUnitPrice" type="text"><br>
+        <input autocomplete="off" id="fuelType_idfuelType" name="fuelType_idfuelType" placeholder="fuelType_idfuelType" type="text"><br>
+        <input autocomplete="off" id="Vehicle_idVehicle" name="Vehicle_idVehicle" placeholder="Vehicle_idVehicle" type="text"><br>
+        <input autocomplete="off" id="Units_idUnits" name="Units_idUnits" placeholder="Units_idUnits" type="text"><br>
+        <input type="submit" value="Add Record">
+    </form>
+    <script>
+    document.getElementById('refuelDate').valueAsDate = new Date();
+    </script>
+{% endblock %}
+
+
+
+
+  
+
