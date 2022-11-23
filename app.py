@@ -10,7 +10,12 @@ def index():
 
 @app.route("/addNew")
 def addRecord():
-    return render_template("addNew.html")
+
+    FUELTYPES = selectAll("fuelType")
+    UNITS = selectAll("units")
+    VEHICLES = selectAll("vehicle")
+
+    return render_template("addNew.html", fuelTypes=FUELTYPES,units=UNITS,vehicles=VEHICLES)
 
     # TODO
     # Auto load last fuel price

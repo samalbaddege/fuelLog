@@ -3,7 +3,85 @@
 {% block body %}
     <h1>Add Record</h1>
     <form action="/saveRecord" method="post">
-        <input autocomplete="off" id="refuelMileage" name="refuelMileage" placeholder="refuelMileage" type="text" autofocus><br>
+
+        <div class="mdc-text-field mdc-text-field--outlined">
+            <input class="mdc-text-field__input" id="refuelMileage" name="refuelMileage" type="number" autofocus autocomplete="off">
+            <div class="mdc-notched-outline">
+              <div class="mdc-notched-outline__leading"></div>
+              <div class="mdc-notched-outline__notch">
+                 <label for="refuelMileage" class="mdc-floating-label">Mileage</label>
+              </div>
+              <div class="mdc-notched-outline__trailing"></div>
+            </div>
+          </div>
+
+          <div class="mdc-text-field mdc-text-field--outlined">
+            <input class="mdc-text-field__input" id="refuelAmount" name="refuelAmount" type="number" autocomplete="off">
+            <div class="mdc-notched-outline">
+              <div class="mdc-notched-outline__leading"></div>
+              <div class="mdc-notched-outline__notch">
+                 <label for="refuelMileage" class="mdc-floating-label">Amount</label>
+              </div>
+              <div class="mdc-notched-outline__trailing"></div>
+            </div>
+          </div>
+
+          <div class="mdc-text-field mdc-text-field--outlined">
+            <input class="mdc-text-field__input" id="refuelDate" name="refuelDate" type="date" autocomplete="off">
+            <div class="mdc-notched-outline">
+              <div class="mdc-notched-outline__leading"></div>
+              <div class="mdc-notched-outline__notch">
+                 <label for="refuelMileage" class="mdc-floating-label">Date</label>
+              </div>
+              <div class="mdc-notched-outline__trailing"></div>
+            </div>
+          </div>
+
+          <div class="mdc-text-field mdc-text-field--outlined">
+            <input class="mdc-text-field__input" id="refuelQty" name="refuelQty" type="number" autocomplete="off">
+            <div class="mdc-notched-outline">
+              <div class="mdc-notched-outline__leading"></div>
+              <div class="mdc-notched-outline__notch">
+                 <label for="refuelMileage" class="mdc-floating-label">Qty</label>
+              </div>
+              <div class="mdc-notched-outline__trailing"></div>
+            </div>
+          </div>
+
+          <div class="mdc-text-field mdc-text-field--outlined">
+            <input class="mdc-text-field__input" id="refuelUnitPrice" name="refuelUnitPrice" type="number" autocomplete="off">
+            <div class="mdc-notched-outline">
+              <div class="mdc-notched-outline__leading"></div>
+              <div class="mdc-notched-outline__notch">
+                 <label for="refuelMileage" class="mdc-floating-label">Unit Price</label>
+              </div>
+              <div class="mdc-notched-outline__trailing"></div>
+            </div>
+          </div>
+
+          <div class="mdc-text-field mdc-text-field--outlined">
+            <input class="mdc-text-field__input" id="fuelType_idfuelType" name="fuelType_idfuelType" type="number" autocomplete="off">
+            <div class="mdc-notched-outline">
+              <div class="mdc-notched-outline__leading"></div>
+              <div class="mdc-notched-outline__notch">
+                 <label for="refuelMileage" class="mdc-floating-label">Fuel Type</label>
+              </div>
+              <div class="mdc-notched-outline__trailing"></div>
+            </div>
+          </div>
+
+          <div class="mdc-text-field mdc-text-field--outlined">
+            <input class="mdc-text-field__input" id="Units_idUnits" name="Units_idUnits" type="number" autocomplete="off">
+            <div class="mdc-notched-outline">
+              <div class="mdc-notched-outline__leading"></div>
+              <div class="mdc-notched-outline__notch">
+                 <label for="refuelMileage" class="mdc-floating-label">Unit</label>
+              </div>
+              <div class="mdc-notched-outline__trailing"></div>
+            </div>
+          </div>
+
+        <!-- <input autocomplete="off" id="refuelMileage" name="refuelMileage" placeholder="refuelMileage" type="text" autofocus><br>
         <input autocomplete="off" id="refuelAmount"  name="refuelAmount" placeholder="refuelAmount" type="number" step="any"><br>
         <input autocomplete="off" id="Full" name="refuelType" type="radio" value="Full"><label for="Full">Full</label>
         <input autocomplete="off" id="Partial" name="refuelType" type="radio" value="Partial"><label for="Partial">Partial</label><br>
@@ -12,11 +90,31 @@
         <input autocomplete="off" id="refuelUnitPrice" name="refuelUnitPrice" placeholder="refuelUnitPrice" type="text"><br>
         <input autocomplete="off" id="fuelType_idfuelType" name="fuelType_idfuelType" placeholder="fuelType_idfuelType" type="text"><br>
         <input autocomplete="off" id="Vehicle_idVehicle" name="Vehicle_idVehicle" placeholder="Vehicle_idVehicle" type="text"><br>
-        <input autocomplete="off" id="Units_idUnits" name="Units_idUnits" placeholder="Units_idUnits" type="text"><br>
-        <input type="submit" value="Add Record">
+        <input autocomplete="off" id="Units_idUnits" name="Units_idUnits" placeholder="Units_idUnits" type="text"><br> -->
+        <!-- <input class="mdc-button mdc-button--raised" type="submit" value="Add Record"> -->
+        <button class="mdc-button mdc-button--raised" type="submit"><span class="mdc-button__ripple"></span>Add Record</button>
+
+        <select name="fuelType" id="fuelType">
+            {% for fuelType in fuelTypes %}
+            <option value="{{fuelType[0]}}">{{fuelType[1]}}</option>
+            {% endfor %}
+        </select>
+
+        <select name="unit" id="unit">
+            {% for unit in units %}
+            <option value="{{unit[0]}}">{{unit[1]}}</option>
+            {% endfor %}
+        </select>
+
     </form>
     <script>
     document.getElementById('refuelDate').valueAsDate = new Date();
+    </script>
+    <script>
+        const textFields = document.querySelectorAll('.mdc-text-field');
+        for (const textField of textFields) {
+            mdc.textField.MDCTextField.attachTo(textField);
+        }
     </script>
 {% endblock %}
 
