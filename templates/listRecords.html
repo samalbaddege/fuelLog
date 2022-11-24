@@ -1,28 +1,31 @@
 {% extends "layout.html" %}
 
+{% block title %}
+All
+{% endblock %}
+
   {% block body %}
-      <!-- <h1>Registrants</h1>
-      <table>
-          <thead>
-              <tr>
-                  <th>Name</th>
-                  <th>Sport</th>
-              </tr>
-          </thead>
-          <tbody>
-              {% for name in registrants %}
-                  <tr>
-                      <td>{{ name }}</td>
-                      <td>{{ registrants[name] }}</td>
-                  </tr>
-              {% endfor %}
-          </tbody>
-      </table> -->
-
-      {% for record in records %}
-                  
-      {{ record }} <br>
-                
-              {% endfor %}
-
-  {% endblock %}
+     <!-- Two Line List with secondary info and action -->
+        <style>
+            .demo-list-two {
+            width: 300px;
+            }
+            </style>
+            
+            <ul class="demo-list-two mdl-list">
+                {% for record in records %}
+                <li class="mdl-list__item mdl-list__item--two-line">
+                <span class="mdl-list__item-primary-content">
+                <!-- <i class="material-icons mdl-list__item-avatar">person</i> -->
+                <span>{{ record[1] }}</span>
+                <span class="mdl-list__item-sub-title">{{ record[2] }}km &nbsp;{{ record[3] }}<i>l</i> &nbsp;Rs.{{ record[5] }}/<i>l</i></span>
+                </span>
+                <span class="mdl-list__item-secondary-content">
+                <span class="mdl-list__item-secondary-info">Rs.{{ record[6] }}</span>
+                <!-- <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a> -->
+                </span>
+            </li>
+            {% endfor %}
+            
+            </ul>
+    {% endblock %}
